@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>플레이스 우도 - 한국어</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <div class="category-section">
+                <ul class="category-items">
+                    <li data-category="coffee" class="active">Coffee</li>
+                    <li data-category="non-coffee">Non-Coffee</li>
+                    <li data-category="dessert">Dessert & Alcholic</li>
+                </ul>
+            </div>
+            <div class="basket-section">
+                <div class="basket-title">장바구니</div>
+                <div id="basket-items"></div>
+                <div id="total-price">총액: ₩ 0</div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div id="menu-grid" class="menu-grid">
+                <!-- 메뉴 아이템들이 JavaScript로 여기에 삽입됩니다 -->
+            </div>
+            <div class="buttons-container">
+                <button class="main-page-button">메인 화면으로</button>
+                <button class="order-complete-button">주문 완료</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 모듈 타입 스크립트 사용 -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
