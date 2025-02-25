@@ -118,6 +118,9 @@ function updateBasket() {
     });
     
     // 총액 계산
-    const totalPrice = basketItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    document.getElementById('total-price').textContent = `총액: ${totalPrice.toLocaleString()}원`;
+    let total = 0;
+    basketItems.forEach(item => {
+        total += item.price * item.quantity;
+    });
+    document.getElementById('total-price').textContent = `총액: ₩ ${total.toLocaleString()}`;
 }

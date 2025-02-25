@@ -172,7 +172,11 @@ body {
 .item-name {
     font-weight: bold;
     margin-bottom: 5px;
-}
+    word-break: keep-all; /* 한글 단어 중간에서 끊기지 않게 함 */
+    word-wrap: break-word; /* 공백 기준으로 줄바꿈 */
+    white-space: normal; /* 자동 줄바꿈 허용 */
+    overflow-wrap: break-word; /* 필요시 단어 내에서도 줄바꿈 */
+  }
 
 .item-price {
     color: #444;

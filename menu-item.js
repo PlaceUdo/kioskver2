@@ -2,24 +2,34 @@
 const menuData = {
     coffee: [
         { id: 1, name: '아메리카노', price: 6000, image: 'images/Americano.png' },
-        { id: 2, name: '카페라떼', price: 5000, image: 'images/CaffeLatte.png' },
-        { id: 3, name: '바닐라라떼', price: 5500, image: 'images/VanillaLatte.png' },
-        { id: 4, name: '카페모카', price: 5500, image: 'images/CaffeMocha.png' },
-        { id: 5, name: '우도땅콩크림라떼', price: 6000, image: 'images/UdoPeanutCreamLatte.png' },
-        { id: 6, name: '흑임자크림라떼', price: 6000, image: 'images/BlackSesameCreamLatte.png' },
-        { id: 7, name: '우도땅콩아이스크림라떼', price: 6500, image: 'images/UdoPeanutIceCreamLatte.png' },
-        { id: 8, name: '우도땅콩 아포카토', price: 6500, image: 'images/UdoPeanutAffogato.png' },
-        { id: 9, name: '에스프레소', price: 4000, image: 'images/Espresso.png' }
+        { id: 2, name: '카페라떼', price: 6500, image: 'images/CaffeLatte.png' },
+        { id: 3, name: '바닐라라떼', price: 7000, image: 'images/VanillaLatte.png' },
+        { id: 4, name: '카페모카', price: 7000, image: 'images/CaffeMocha.png' },
+        { id: 5, name: '우도땅콩크림라떼', price: 8500, image: 'images/UdoPeanutCreamLatte.png' },
+        { id: 6, name: '흑임자크림라떼', price: 8500, image: 'images/BlackSesameCreamLatte.png' },
+        { id: 7, name: '우도땅콩 아이스크림라떼', price: 9000, image: 'images/UdoPeanutIceCreamLatte.png' },
+        { id: 8, name: '우도땅콩 아포카토', price: 9000, image: 'images/UdoPeanutAffogato.png' },
+        { id: 9, name: '에스프레소', price: 5000, image: 'images/Espresso.png' }
     ],
     'non-coffee': [
-        { id: 10, name: '녹차', price: 4500, image: 'images/GreenTea.png' },
-        { id: 11, name: '얼그레이', price: 4500, image: 'images/EarlGrey.png' },
-        { id: 12, name: '제주감귤차', price: 5000, image: 'images/JejuTangerineTea.png' }
+        { id: 10, name: '캐모마일', price: 6000, image: 'images/ChamomileTea.png' },
+        { id: 11, name: '청귤차', price: 6000, image: 'images/GreenTangerineTea.png' },
+        { id: 12, name: '한라봉차', price: 6000, image: 'images/HallabongTea.png' },
+        { id: 13, name: '초코라떼', price: 7000, image: 'images/ChocolateLatte.png' },
+        { id: 14, name: '녹차라떼', price: 7000, image: 'images/GreenTeaLatte.png' },
+        { id: 15, name: '청귤에이드', price: 7000, image: 'images/GreenTangerineAde.png' },
+        { id: 16, name: '한라봉에이드', price: 7000, image: 'images/HallabongAde.png' },
+        { id: 17, name: '블루레몬에이드', price: 7000, image: 'images/BlueLemonAde.png' },
+        { id: 18, name: '딸기밀크티라떼', price: 8500, image: 'images/StrawberryMilkTeaLatte.png' }
+
     ],
     dessert: [
-        { id: 13, name: '크로플', price: 5500, image: 'images/Croffle.png' },
-        { id: 14, name: '우도땅콩 케이크', price: 6500, image: 'images/UdoPeanutCake.png' },
-        { id: 15, name: '생맥주', price: 7000, image: 'images/DraftBeer.png' }
+        { id: 19, name: '우도땅콩아이스크림', price: 5000, image: 'images/UdoPeanutIceCream.png' },
+        { id: 20, name: '우도땅콩아이스크림과 크로플플', price: 10000, image: 'images/UdoPeanutIceCreamCroffle.png' },
+        { id: 21, name: '1664 블랑', price: 8000, image: 'images/1664Blanc.png' },
+        { id: 22, name: '빅 웨이브', price: 9000, image: 'images/BigWave.png' },
+        { id: 23, name: '코로나', price: 7000, image: 'images/Corona.png' },
+        { id: 24, name: '켈리', price: 5000, image: 'images/Kelly.png' }
     ]
 };
 
