@@ -24,8 +24,8 @@ const menuData = {
 
     ],
     dessert: [
-        { id: 19, name: '우도땅콩아이스크림', price: 5000, image: 'images/UdoPeanutIceCream.png' },
-        { id: 20, name: '우도땅콩아이스크림과 크로플', price: 10000, image: 'images/UdoPeanutIceCreamCroffle.png' },
+        { id: 19, name: '우도땅콩 아이스크림', price: 5000, image: 'images/UdoPeanutIceCream.png' },
+        { id: 20, name: '우도땅콩 아이스크림과 크로플', price: 10000, image: 'images/UdoPeanutIceCreamCroffle.png' },
         { id: 21, name: '1664 블랑', price: 8000, image: 'images/1664Blanc.png' },
         { id: 22, name: '빅 웨이브', price: 9000, image: 'images/BigWave.png' },
         { id: 23, name: '코로나', price: 7000, image: 'images/Corona.png' },
