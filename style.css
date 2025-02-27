@@ -126,7 +126,7 @@ body {
 
 .menu-grid {
     display: grid;
-    grid-template-columns: repeat(5, 1fr); /* 4개의 열로 고정 */
+    grid-template-columns: repeat(3, 1fr); /* 4개의 열로 고정 */
     gap: 15px;
     width: 100%;
     max-height: 90vh;
