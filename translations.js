@@ -1,4 +1,4 @@
-const translations = {
+export const translations = {
     ko: {
         // 한국어 텍스트
         "Coffee": "커피",
