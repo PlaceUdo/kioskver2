@@ -53,20 +53,30 @@
     </style>
 </head>
 <body>
-    <h1>플레이스 우도</h1>
-    <div class="grid-container">
-        <a href="menu.html" class="flag-container">
-            <img src="images/KO.png" alt="대한민국 국기" />
-        </a>
-        <a href="menu.html" class="flag-container">
-            <img src="images/ZH.png" alt="중국 국기" />
-        </a>
-        <a href="menu.html" class="flag-container">
-            <img src="images/EN.png" alt="미국 국기" />
-        </a>
-        <a href="menu.html" class="flag-container">
-            <img src="images/JP.png" alt="일본 국기" />
-        </a>
-    </div>
+    <header>
+        <h1>플레이스 우도</h1>
+    </header>
+    <main>
+        <div class="grid-container">
+            <a href="menu.html" class="flag-container" onclick="setLanguage('ko')">
+                <img src="images/KO.png" alt="대한민국 국기" data-language="ko"/>
+            </a>
+            <a href="menu.html" class="flag-container" onclick="setLanguage('zh')">
+                <img src="images/ZH.png" alt="중국 국기" data-language="zh"/>
+            </a>
+            <a href="menu.html" class="flag-container" onclick="setLanguage('en')">
+                <img src="images/EN.png" alt="미국 국기" data-language="en"/>
+            </a>
+            <a href="menu.html" class="flag-container" onclick="setLanguage('ja')">
+                <img src="images/JP.png" alt="일본 국기" data-language="ja"/>
+            </a>
+        </div>
+    </main>
+    <script>
+        function setLanguage(language) {
+            localStorage.setItem('language', language);
+            window.location.href = 'menu.html';
+        }
+    </script>
 </body>
 </html>

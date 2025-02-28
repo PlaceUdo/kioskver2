@@ -16,8 +16,8 @@ body {
 }
 
 .sidebar {
-    width: 25%;
-    min-width: 25%;
+    width: 33%;
+    min-width: 33%;
     border-right: 2px solid #000;
     padding: 20px;
     display: flex;
@@ -87,19 +87,84 @@ body {
     margin-bottom: 10px;
 }
 
-#basket-items {
-    flex-grow: 1;
-    overflow-y: auto;
-    margin-bottom: 15px;
+.basket-item {
+    border-bottom: 1px solid #eee;
+    padding: 8px 6px;
+    border-radius: 4px;
+    margin-bottom: 5px;
 }
 
-.basket-item {
+.basket-item-row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 8px;
+    width: 100%;
+    justify-content: space-between; /* 아이템과 가격 사이 간격 조정 */
+}
+
+/* 장바구니 아이템 이름 스타일 */
+/* 장바구니 아이템 이름 스타일 */
+.basket-item .item-name {
+    font-weight: bold;
     margin-bottom: 5px;
-    border-bottom: 1px solid #eee;
+    word-break: keep-all; /* 한글 단어 중간에서 끊기지 않게 함 */
+    word-wrap: break-word; /* 공백 기준으로 줄바꿈 */
+    white-space: normal; /* 자동 줄바꿈 허용 */
+    overflow-wrap: break-word; /* 필요시 단어 내에서도 줄바꿈 */
+    flex: 1; /* 가능한 많은 공간 차지 */
+    text-align: left; /* 왼쪽 정렬 */
+}
+
+/* 메뉴 아이템 이름 스타일 */
+.menu-item .item-name {
+    font-weight: bold;
+    margin-bottom: 5px;
+    word-break: keep-all;
+    word-wrap: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+    text-align: center;
+    width: 100%;
+}
+
+/* 수량 조절 버튼 컨테이너 */
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    margin: 0 10px; /* 양쪽에 여백 추가 */
+}
+
+/* 가격 스타일 - 오른쪽 정렬 */
+/* 장바구니 아이템 가격 스타일 */
+.basket-item .item-price {
+    color: #444;
+    text-align: right; /* 오른쪽 정렬 */
+    min-width: 70px; /* 최소 너비 설정하여 정렬 유지 */
+    margin-left: auto; /* 오른쪽 정렬 보장 */
+}
+
+/* 메뉴 아이템 가격 스타일 */
+.menu-item .item-price {
+    color: #444;
+    text-align: center;
+    width: 100%;
+    display: block;
+}
+
+/* 장바구니 아이템 온도 색상 */
+.basket-item.hot-item {
+    background-color: #ffe0e0;  /* 배경색 더 진하게 */
+    border-left: 5px solid #ff3333;  /* 테두리 더 진하게, 더 두껍게 */
+}
+
+.basket-item.ice-item {
+    background-color: #e0e0ff;  /* 배경색 더 진하게 */
+    border-left: 5px solid #3333ff;  /* 테두리 더 진하게, 더 두껍게 */
+}
+
+.item-options {
+    font-size: 11px;
+    color: #666;
+    margin-top: 2px;
 }
 
 .remove-item {
@@ -114,6 +179,7 @@ body {
     justify-content: center;
     align-items: center;
     font-size: 12px;
+    margin-left: 8px; /* 가격과의 간격 조정 */
 }
 
 #total-price {
@@ -132,6 +198,7 @@ body {
     max-height: 90vh;
     overflow-y: auto;
     margin-bottom: 80px; /* 버튼을 위한 공간 확보 */
+    text-align: center;
 }
 
 .menu-item {
@@ -144,6 +211,7 @@ body {
     flex-direction: column;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     overflow: hidden;
+    text-align: center; /* 메뉴 아이템 텍스트 가운데 정렬 */
 }
 
 .menu-item:hover {
@@ -161,25 +229,14 @@ body {
     width: 100%;
     height: 120px;
     object-fit: contain;
+    margin: 0 auto; /* 이미지를 가운데로 정렬 */
+    display: block; /* 블록 요소로 변경하여 마진 적용 가능하게 함 */
 }
 
-.item-info {
-    padding: 10px;
-    background-color: #f8f8f8;
+.menu-item .item-info {
+    width: 100%;
+    padding: 8px;
     text-align: center;
-}
-
-.item-name {
-    font-weight: bold;
-    margin-bottom: 5px;
-    word-break: keep-all; /* 한글 단어 중간에서 끊기지 않게 함 */
-    word-wrap: break-word; /* 공백 기준으로 줄바꿈 */
-    white-space: normal; /* 자동 줄바꿈 허용 */
-    overflow-wrap: break-word; /* 필요시 단어 내에서도 줄바꿈 */
-  }
-
-.item-price {
-    color: #444;
 }
 
 .buttons-container {
@@ -200,7 +257,7 @@ body {
     border-radius: 4px;
     font-size: 16px;
     cursor: pointer;
-    width: 150px;
+    width: 250px;
 }
 
 .main-page-button {
@@ -248,14 +305,16 @@ body {
     align-items: center;
 }
 
+/* 팝업 크기 증가 */
 .popup-content {
     background-color: white;
     border-radius: 8px;
     width: 90%;
-    max-width: 500px;
-    max-height: 80vh;
+    max-width: 400px; /* 500px에서 800px로 증가 */
+    max-height: 90vh;
     overflow-y: auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
 }
 
 .popup-header {
@@ -285,15 +344,31 @@ body {
     padding: 15px;
 }
 
-.popup-image-container {
-    text-align: center;
+.popup-flex-container {
+    display: flex;
+    flex-direction: row;
     margin-bottom: 15px;
+    gap: 20px;
+}
+
+.popup-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .popup-image-container img {
     max-width: 100%;
-    max-height: 200px;
+    max-height: 250px; /* 이미지 크기 증가 */
     object-fit: contain;
+}
+
+.popup-options {
+    flex: 1.5; /* 옵션 영역 비중 증가 */
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* 옵션 그룹 간 간격 증가 */
 }
 
 .popup-info {
@@ -352,88 +427,62 @@ body {
 .add-to-cart-button:hover {
     background-color: #0069d9;
 }
-/* 팝업 관련 기존 CSS에 추가합니다 */
-.popup-flex-container {
-    display: flex;
-    margin-bottom: 15px;
-}
-
-.popup-image-container {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-right: 15px;
-}
-
-.popup-options {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
 
 .option-group {
-    margin-bottom: 8px;
+    margin-bottom: 12px;
 }
 
 .option-title {
     font-weight: bold;
-    font-size: 14px;
-    margin-bottom: 5px;
+    font-size: 16px;
+    margin-bottom: 8px;
 }
 
 .option-buttons {
     display: flex;
-    gap: 5px;
+    flex-wrap: wrap;
+    gap: 8px;
 }
 
 .option-button {
-    flex: 1;
-    padding: 5px;
-    background-color: white;
-    border: 0.5px solid #ddd; /* 가장 얇은 테두리 */
+    padding: 8px 15px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 13px;
+    font-size: 14px;
     cursor: pointer;
     transition: all 0.2s ease;
 }
 
 .option-button.selected {
-    background-color: #e6f0ff;
-    border-color: #007bff;
-    color: #007bff;
+    background-color: #4a90e2;
+    color: white;
+    border-color: #3a80d2;
 }
 
-.option-button:hover {
-    background-color: #f5f5f5;
+/* 온도 옵션 버튼 스타일 */
+.option-button[data-option-type="temperature"][data-option-value="hot"] {
+    background-color: #ffeeee;
+    border-color: #ff6666;
+    color: #ff0000;
 }
 
-/* 모바일 대응 */
-@media (max-width: 500px) {
-    .popup-flex-container {
-        flex-direction: column;
-    }
-    
-    .popup-image-container {
-        padding-right: 0;
-        margin-bottom: 15px;
-    }
-}
-/* 장바구니 아이템 스타일 업데이트 */
-.basket-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 8px;
-    margin-bottom: 5px;
-    border-bottom: 1px solid #eee;
+.option-button[data-option-type="temperature"][data-option-value="hot"].selected {
+    background-color: #ff6666;
+    border-color: #ff0000;
+    color: white;
 }
 
-.item-options {
-    font-size: 11px;
-    color: #666;
-    margin-top: 2px;
+.option-button[data-option-type="temperature"][data-option-value="ice"] {
+    background-color: #eeeeff;
+    border-color: #6666ff;
+    color: #0000ff;
+}
+
+.option-button[data-option-type="temperature"][data-option-value="ice"].selected {
+    background-color: #6666ff;
+    border-color: #0000ff;
+    color: white;
 }
 
 /* 옵션 버튼 비활성화 스타일 */
@@ -442,26 +491,49 @@ body {
     cursor: not-allowed;
     background-color: #f5f5f5;
 }
-.option-button[data-option-type="temperature"][data-option-value="hot"] {
-    background-color: #ffeeee;
-    border-color: #ff0000;
-    color: #ff0000;
+
+/* 모바일 대응 */
+@media (max-width: 768px) {
+    .popup-flex-container {
+        flex-direction: column;
+    }
+    
+    .popup-image-container {
+        margin-bottom: 20px;
+    }
+}
+#timeout-warning {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 0, 0, 0.8);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    z-index: 9999;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    animation: pulse 1s infinite alternate;
 }
 
-.option-button[data-option-type="temperature"][data-option-value="hot"].selected {
-    background-color: #ff9999;
-    border-color: #ff0000;
-    color: #ff0000;
+#timeout-warning p {
+    margin: 10px 0;
 }
 
-.option-button[data-option-type="temperature"][data-option-value="ice"] {
-    background-color: #eeeeff;
-    border-color: #0000ff;
-    color: #0000ff;
+#warning-countdown {
+    font-size: 24px;
+    font-weight: bold;
 }
 
-.option-button[data-option-type="temperature"][data-option-value="ice"].selected {
-    background-color: #9999ff;
-    border-color: #0000ff;
-    color: #0000ff;
+/* 깜빡임 애니메이션 */
+@keyframes pulse {
+    from {
+        box-shadow: 0 0 10px rgba(255, 0, 0, 0.7);
+    }
+    to {
+        box-shadow: 0 0 20px rgba(255, 0, 0, 1);
+    }
 }
