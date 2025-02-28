@@ -1,5 +1,5 @@
 // 메뉴 데이터
-const menuData = {
+export const menuData = {
     coffee: [
         {
             id: 'americano',
