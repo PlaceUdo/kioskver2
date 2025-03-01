@@ -1,13 +1,16 @@
 import { menuData } from './menu-item.js';
 import { translations } from './translations.js';
 
+let currentLanguage = localStorage.getItem('language') || 'ko';
+let currentCategory = 'coffee';
+let basketItems = [];
+
 document.addEventListener('DOMContentLoaded', () => {
     const menuGrid = document.getElementById('menu-grid');
-    const language = localStorage.getItem('language') || 'ko';
-    const currentTranslations = translations[language];
+    const currentTranslations = translations[currentLanguage];
 
     function createMenuGrid(category) {
-        menuGrid.innerHTML = ''; // Clear existing items
+        menuGrid.innerHTML = '';
         const categoryItems = menuData[category];
 
         categoryItems.forEach(item => {
@@ -20,24 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="item-price">₩ ${item.price.toLocaleString()}</div>
                 </div>
             `;
-            menuItemDiv.addEventListener('click', () => openPopup(item, currentTranslations[item.name]));
+            menuItemDiv.addEventListener('click', () => console.log('Menu item clicked', item));
             menuGrid.appendChild(menuItemDiv);
         });
     }
 
-    // Set initial category
     const categoryItems = document.querySelectorAll('.category-items li');
     categoryItems.forEach(item => {
         item.addEventListener('click', () => {
-            // Remove active class from all items
             categoryItems.forEach(el => el.classList.remove('active'));
-            // Add active class to clicked item
             item.classList.add('active');
-            // Create menu grid for selected category
             createMenuGrid(item.dataset.category);
         });
     });
 
-    // Initialize with first category
+    // 초기 카테고리 로드
     createMenuGrid('coffee');
 });
+
+export { currentLanguage, currentCategory, basketItems, translations, menuData };
