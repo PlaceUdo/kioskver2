@@ -1,5 +1,5 @@
 // 타이머 관련 변수
-let timeoutDuration = 60; // 초 단위
+let timeoutDuration = 45; // 초 단위
 let timeLeft = timeoutDuration;
 let countdownTimer;
 let warningShown = false;
