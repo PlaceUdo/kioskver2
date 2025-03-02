@@ -3,9 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>플레이스 우도 - 메뉴</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <link rel="stylesheet" href="style.css">
+    <script>
+        // 페이지 로드 시 전체 화면 요청 함수
+        function requestFullScreen() {
+            const element = document.documentElement;
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) { // Firefox
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) { // Internet Explorer/Edge
+                element.msRequestFullscreen();
+            }
+        }
+
+        // 태블릿 또는 모바일 기기 감지 및 전체 화면 요청
+        function checkDeviceAndFullScreen() {
+            // 태블릿 또는 모바일 기기 감지 (간단한 방법)
+            const isMobileOrTablet = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobileOrTablet) {
+                // 페이지 로드 후 약간의 지연 후 전체 화면 요청 (사용자 상호작용 요구 우회)
+                setTimeout(requestFullScreen, 500);
+            }
+        }
+
+        // 페이지 로드 시 실행
+        window.addEventListener('load', checkDeviceAndFullScreen);
+
+        // 전체 화면 변경 이벤트 리스너 (선택적)
+        document.addEventListener('fullscreenchange', function() {
+            console.log('Fullscreen state changed');
+        });
+    </script>
 </head>
 <body>
+    <!-- 기존 HTML 내용 그대로 유지 -->
     <main>
         <div class="container">
             <div class="sidebar">
@@ -60,7 +96,7 @@
                                 <div class="option-title">샷</div>
                                 <div class="option-buttons">
                                     <button class="option-button" data-option-type="shot" data-option-value="normal">기본</button>
-                                    <button class="option-button" data-option-type="shot" data-option-value="extra">샷추가</button>
+                                    <button class="option-button" data-option-type="shot" data-option-value="extra">샷 추가</button>
                                     <button class="option-button" data-option-type="shot" data-option-value="light">연하게</button>
                                 </div>
                             </div>

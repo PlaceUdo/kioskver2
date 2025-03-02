@@ -210,7 +210,7 @@ export const menuData = {
             id: 'corona',
             name: '코로나',
             price: 7000,
-            image: 'images/corona.png'
+            image: 'images/Corona.png'
         },
         {
             id: 'kelly',
