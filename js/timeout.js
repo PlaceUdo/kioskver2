@@ -140,17 +140,39 @@ function updateWarningCountdown() {
 
 // 홈페이지로 리디렉션 및 장바구니 초기화
 function redirectToHome() {
-    // 장바구니 초기화 (필요한 경우 다른 모듈에서 가져온 함수 사용)
-    // 예: clearBasket();
+    // 현재 페이지 확인
+    const currentPage = window.location.pathname;
+    const isMenuPage = currentPage.includes('menu.html');
+    const isBasketPage = currentPage.includes('basket.html');
     
-    // 로컬 스토리지 장바구니 초기화 (필요시)
-    localStorage.removeItem('cartItems');
+    // 장바구니 초기화
+    clearBasket();
     
-    // 세션 스토리지 장바구니 초기화 (필요시)
-    sessionStorage.removeItem('cartItems');
+    // 장바구니 초기화 완료 이벤트 발생 (다른 페이지에 알림)
+    localStorage.setItem('basketCleared', Date.now().toString());
     
-    // index.html로 리디렉션
-    window.location.href = 'index.html';
+    // menu.html 또는 basket.html 페이지에서는 index.html로 리디렉션
+    // 다른 페이지에서는 새로고침 없이 index.html로 이동
+    if (isMenuPage || isBasketPage) {
+        window.location.href = 'index.html';
+    } else {
+        window.location.href = 'index.html';
+    }
+}
+
+// 장바구니 초기화 함수
+function clearBasket() {
+    // localStorage의 basket 관련 항목 제거
+    localStorage.removeItem('basketItems');
+    
+    try {
+        // basket.js의 clearBasket 함수가 있다면 호출
+        if (typeof window.clearBasket === 'function') {
+            window.clearBasket();
+        }
+    } catch (error) {
+        console.log('Could not access basket.js clearBasket function');
+    }
 }
 
 // 사용자 활동 감지 설정
@@ -204,3 +226,23 @@ function enableTimeout() {
         initializeTimer();
     }
 }
+
+// localStorage 변경 이벤트 감지 (다른 페이지에서 장바구니가 초기화되었을 때 처리)
+window.addEventListener('storage', function(e) {
+    if (e.key === 'basketCleared') {
+        // 현재 페이지가 menu.html 또는 basket.html인 경우 장바구니 UI 업데이트
+        const currentPage = window.location.pathname;
+        const isMenuPage = currentPage.includes('menu.html');
+        const isBasketPage = currentPage.includes('basket.html');
+        
+        if (isMenuPage || isBasketPage) {
+            // 장바구니 UI 업데이트
+            clearBasket();
+            
+            // basket.html 페이지인 경우 새로고침
+            if (isBasketPage) {
+                window.location.reload();
+            }
+        }
+    }
+});

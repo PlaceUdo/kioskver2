@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>플레이스 우도 - 장바구니</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .container {
+            display: block;
+            max-width: 100%;
+            height: 90vh;
+        }
+        .sidebar {
+            width: 500px;
+            height: 100%;
+            border: none;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        #total-price {
+            position: static;
+            margin: 10px 0;
+            text-align: right;
+            padding: 10px 0;
+            border-top: 1px solid #000;
+        }
+        #basket-items {
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+        }
+    </style>
+    <script>
+        // 페이지 로드 시 전체 화면 요청 함수
+        function requestFullScreen() {
+            const element = document.documentElement;
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.mozRequestFullScreen) { // Firefox
+                element.mozRequestFullScreen();
+            } else if (element.webkitRequestFullscreen) { // Chrome, Safari and Opera
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) { // Internet Explorer/Edge
+                element.msRequestFullscreen();
+            }
+        }
+
+        // 태블릿 또는 모바일 기기 감지 및 전체 화면 요청
+        function checkDeviceAndFullScreen() {
+            const isMobileOrTablet = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobileOrTablet) {
+                setTimeout(requestFullScreen, 500);
+            }
+        }
+
+        window.addEventListener('load', checkDeviceAndFullScreen);
+        
+        // 요구사항 1: 장바구니 초기화 감지
+        window.addEventListener('storage', function(e) {
+            if (e.key === 'basketCleared') {
+                window.location.reload();
+            }
+        });
+    </script>
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="sidebar">
+                <div class="basket-section">
+                    <div class="basket-title">장바구니</div>
+                    <div id="basket-items"></div>
+                    <div id="total-price">총액:0</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 요구사항 3: 언어 변경 방지 및 항상 한국어로 표시
+        document.addEventListener('DOMContentLoaded', function() {
+            // main.js에서 설정된 currentLanguage를 항상 'ko'로 강제 설정
+            if (typeof localStorage !== 'undefined') {
+                localStorage.setItem('currentLanguage', 'ko');
+            }
+            
+            // 페이지 로드 시 장바구니 제목과 총액을 강제로 한국어로 설정
+            const basketTitle = document.querySelector('.basket-title');
+            if (basketTitle) {
+                basketTitle.textContent = "장바구니";
+            }
+            
+            const totalPrice = document.getElementById('total-price');
+            if (totalPrice) {
+                const amount = totalPrice.textContent.includes(':') ? totalPrice.textContent.split(':')[1].trim() : '0';
+                totalPrice.textContent = `총액: ${amount}`;
+            }
+        });
+    </script>
+    <script type="module" src="js/translations.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/translation.js"></script>
+    <script type="module" src="js/basket.js"></script>
+</body>
+</html>
