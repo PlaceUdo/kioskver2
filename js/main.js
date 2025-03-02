@@ -1,10 +1,9 @@
-// main.js 상단 import 부분 수정
+// main.js
 import { menuData } from './menu-item.js';
 import translations from './translations.js';
-import { displayMenuItems, setupMenuListeners } from './menu.js'; // setupMenuListeners 추가
+import { displayMenuItems, setupMenuListeners } from './menu.js';
 import { setupPopupListeners } from './popup.js';
-import { translatePage } from './translation.js';
-import { basketItems, clearBasket, updateBasket } from './basket.js';
+import { basketItems, clearBasket, completeOrder } from './basket.js';
 
 // window 객체에 translations 등록 (timeout.js 등에서 사용)
 window.translations = translations;
@@ -13,37 +12,19 @@ window.translations = translations;
 export let currentLanguage = localStorage.getItem('language') || 'ko';
 export let currentCategory = 'coffee';
 
-// main.js 내의 initializeApp 함수 수정
+// 메인 초기화 함수
 function initializeApp() {
-    // 언어 로드
-    translatePage();
-
     // 초기 메뉴 표시
     displayMenuItems(currentCategory);
 
-    // 카테고리 이벤트 리스너 등록 - 이 부분을 수정
-    setupMenuListeners(); // 기존의 setupCategoryListeners() 대신 사용
+    // 카테고리 이벤트 리스너 등록
+    setupMenuListeners();
 
     // 버튼 이벤트 리스너 등록
     setupButtonListeners();
 
     // 팝업 이벤트 리스너 등록
     setupPopupListeners();
-}
-
-// 카테고리 이벤트 리스너 설정
-function setupCategoryListeners() {
-    document.querySelectorAll('.category-items li').forEach(li => {
-        li.addEventListener('click', () => {
-            // 활성 카테고리 스타일 변경
-            document.querySelector('.category-items li.active')?.classList.remove('active');
-            li.classList.add('active');
-
-            // 선택된 카테고리 메뉴 표시
-            currentCategory = li.dataset.category;
-            displayMenuItems(currentCategory);
-        });
-    });
 }
 
 // 버튼 이벤트 리스너 설정
@@ -56,9 +37,15 @@ function setupButtonListeners() {
             return;
         }
 
-        const message = translations[currentLanguage]["주문이 완료되었습니다!"] || "주문이 완료되었습니다!";
-        alert(message);
-        clearBasket();
+        // completeOrder 함수를 호출하여 주문 완료 처리
+        if (completeOrder()) {
+            // completeOrder 함수에서 서버 통신 후 처리하므로 여기서는 별도 처리 없음
+        } else {
+            // 서버 연결이 안 되었을 경우 로컬에서만 처리
+            const message = translations[currentLanguage]["주문이 완료되었습니다!"] || "주문이 완료되었습니다!";
+            alert(message);
+            clearBasket();
+        }
     });
 
     // 메인 화면 버튼 이벤트 리스너
@@ -69,6 +56,27 @@ function setupButtonListeners() {
         }
     });
 }
+
+// Socket.io 로드 감지 이벤트
+window.addEventListener('load', () => {
+    // Socket.io 스크립트 로드 확인
+    if (document.querySelector('script[src="/socket.io/socket.io.js"]')) {
+        console.log('Socket.io 스크립트가 이미 로드되었습니다.');
+    } else {
+        // 동적으로 socket.io 스크립트 로드
+        const script = document.createElement('script');
+        script.src = '/socket.io/socket.io.js';
+        script.onload = () => {
+            console.log('Socket.io 스크립트가 로드되었습니다.');
+            // Socket.io 로드 완료 이벤트 발생
+            window.dispatchEvent(new Event('socketLoaded'));
+        };
+        script.onerror = (error) => {
+            console.error('Socket.io 로드 오류:', error);
+        };
+        document.head.appendChild(script);
+    }
+});
 
 // DOM이 로드된 후 실행
 document.addEventListener('DOMContentLoaded', initializeApp);
