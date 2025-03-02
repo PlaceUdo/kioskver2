@@ -45,7 +45,10 @@ const translations = {
         "주문 완료": "주문 완료",
         "총액: ₩": "총액: ₩",
         "warning_title": "⚠️ 주의: 세션이 곧 종료됩니다!",
-        "warning_countdown": "초 후 메인화면으로 돌아갑니다."
+        "warning_countdown": "초 후 메인화면으로 돌아갑니다.",
+        "연하게": "연하게",
+"얼음 없음": "얼음 없음",
+"설탕 제거": "설탕 제거"
         // ... 필요한 모든 한국어 텍스트를 추가 ...
     },
     zh: {
@@ -94,7 +97,10 @@ const translations = {
         "주문 완료": "訂單完成",
         "총액: ₩": "總額: ₩",
         "warning_title": "⚠️ 注意：会话即将结束！",
-        "warning_countdown": "秒后返回主页。"
+        "warning_countdown": "秒后返回主页。",
+        "연하게": "淡咖啡",
+"얼음 없음": "无冰",
+"설탕 제거": "无糖"
         // ... 필요한 모든 중국어 텍스트를 추가 ...
     },
     en: {
@@ -143,7 +149,10 @@ const translations = {
         "주문 완료": "Order Complete",
         "총액: ₩": "Total: ₩",
         "warning_title": "⚠️ Warning: Your session is about to expire!",
-        "warning_countdown": "seconds until returning to main page."
+        "warning_countdown": "seconds until returning to main page.",
+        "연하게": "Light Shot",
+"얼음 없음": "No Ice",
+"설탕 제거": "No Sugar"
         // ... 필요한 모든 영어 텍스트를 추가 ...
     },
     ja: {
@@ -192,7 +201,10 @@ const translations = {
         "주문 완료": "注文完了",
         "총액: ₩": "合計: ₩",
         "warning_title": "⚠️ 注意：セッションがまもなく終了します！",
-        "warning_countdown": "秒後にメイン画面に戻ります。"
+        "warning_countdown": "秒後にメイン画面に戻ります。",
+        "연하게": "ライトショット",
+"얼음 없음": "氷なし",
+"설탕 제거": "砂糖なし"
         // ... 필요한 모든 일본어 텍스트를 추가 ...
     }
 };

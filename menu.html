@@ -37,48 +37,51 @@
                         <span class="close-popup">&times;</span>
                     </div>
                     <div class="popup-body">
-                        <div class="popup-flex-container">
-                            <div class="popup-image-container">
-                                <img id="popup-image" src="" alt="메뉴 이미지">
-                            </div>
-                            <div class="popup-options">
-                                <div class="option-group">
-                                    <div class="option-title">온도</div>
-                                    <div class="option-buttons">
-                                        <button class="option-button" data-option-type="temperature" data-option-value="ice">ice</button>
-                                        <button class="option-button" data-option-type="temperature" data-option-value="hot">hot</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="option-group">
-                                    <div class="option-title">샷</div>
-                                    <div class="option-buttons">
-                                        <button class="option-button" data-option-type="shot" data-option-value="normal">기본</button>
-                                        <button class="option-button" data-option-type="shot" data-option-value="extra">샷추가</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="option-group">
-                                    <div class="option-title">얼음</div>
-                                    <div class="option-buttons">
-                                        <button class="option-button" data-option-type="ice" data-option-value="normal">기본</button>
-                                        <button class="option-button" data-option-type="ice" data-option-value="half">얼음 절반</button>
-                                    </div>
-                                </div>
-                                
-                                <div class="option-group">
-                                    <div class="option-title">당도</div>
-                                    <div class="option-buttons">
-                                        <button class="option-button" data-option-type="sweet" data-option-value="normal">기본</button>
-                                        <button class="option-button" data-option-type="sweet" data-option-value="less">덜 달게</button>
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="popup-image-container">
+                            <img id="popup-image" src="" alt="메뉴 이미지">
                         </div>
                         
                         <div class="popup-info">
                             <div id="popup-description" class="popup-description"></div>
                             <div id="popup-price" class="popup-price"></div>
+                        </div>
+                        
+                        <!-- 옵션 그룹을 한 줄로 정렬하는 컨테이너 -->
+                        <div class="options-container">
+                            <div class="option-group">
+                                <div class="option-title">온도</div>
+                                <div class="option-buttons">
+                                    <button class="option-button" data-option-type="temperature" data-option-value="ice">ice</button>
+                                    <button class="option-button" data-option-type="temperature" data-option-value="hot">hot</button>
+                                </div>
+                            </div>
+                            
+                            <div class="option-group">
+                                <div class="option-title">샷</div>
+                                <div class="option-buttons">
+                                    <button class="option-button" data-option-type="shot" data-option-value="normal">기본</button>
+                                    <button class="option-button" data-option-type="shot" data-option-value="extra">샷추가</button>
+                                    <button class="option-button" data-option-type="shot" data-option-value="light">연하게</button>
+                                </div>
+                            </div>
+                            
+                            <div class="option-group">
+                                <div class="option-title">얼음</div>
+                                <div class="option-buttons">
+                                    <button class="option-button" data-option-type="ice" data-option-value="normal">기본</button>
+                                    <button class="option-button" data-option-type="ice" data-option-value="half">얼음 절반</button>
+                                    <button class="option-button" data-option-type="ice" data-option-value="none">얼음 없음</button>
+                                </div>
+                            </div>
+                            
+                            <div class="option-group">
+                                <div class="option-title">당도</div>
+                                <div class="option-buttons">
+                                    <button class="option-button" data-option-type="sweet" data-option-value="normal">기본</button>
+                                    <button class="option-button" data-option-type="sweet" data-option-value="less">덜 달게</button>
+                                    <button class="option-button" data-option-type="sweet" data-option-value="none">설탕 제거</button>
+                                </div>
+                            </div>
                         </div>
                         
                         <div class="popup-quantity">
@@ -87,6 +90,8 @@
                             <button id="increase-quantity">+</button>
                         </div>
                     </div>
+                    
+                    <!-- 장바구니 추가 버튼을 아래로 이동 -->
                     <div class="popup-footer">
                         <button id="add-to-cart" class="add-to-cart-button">장바구니에 추가</button>
                     </div>
@@ -94,7 +99,10 @@
             </div>
         </div>
     </main>
-    <script type="module" src="js/script.js"></script>
+    <script type="module" src="js/translations.js"></script>
+    <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/menu.js"></script>
+    <script type="module" src="js/popup.js"></script>
     <script type="module" src="js/basket.js"></script>
     <script src="js/timeout.js"></script>
 </body>
