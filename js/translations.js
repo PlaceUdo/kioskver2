@@ -92,7 +92,7 @@ const translations = {
         "장바구니에 추가": "加入購物車",
         "메인 화면으로": "返回主畫面",
         "주문 완료": "訂單完成",
-        "총액: ₩": "總額: ",
+        "총액: ₩": "總額: ₩",
         "warning_title": "⚠️ 注意：会话即将结束！",
         "warning_countdown": "秒后返回主页。"
         // ... 필요한 모든 중국어 텍스트를 추가 ...
@@ -141,7 +141,7 @@ const translations = {
         "장바구니에 추가": "Add to Cart",
         "메인 화면으로": "Main Page",
         "주문 완료": "Order Complete",
-        "총액: ₩": "Total: ",
+        "총액: ₩": "Total: ₩",
         "warning_title": "⚠️ Warning: Your session is about to expire!",
         "warning_countdown": "seconds until returning to main page."
         // ... 필요한 모든 영어 텍스트를 추가 ...
@@ -190,7 +190,7 @@ const translations = {
         "장바구니에 추가": "カートに追加",
         "메인 화면으로": "メイン画面に戻る",
         "주문 완료": "注文完了",
-        "총액: ₩": "合計: ",
+        "총액: ₩": "合計: ₩",
         "warning_title": "⚠️ 注意：セッションがまもなく終了します！",
         "warning_countdown": "秒後にメイン画面に戻ります。"
         // ... 필요한 모든 일본어 텍스트를 추가 ...
