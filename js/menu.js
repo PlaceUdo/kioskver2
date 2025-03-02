@@ -57,7 +57,7 @@ export function setupMenuListeners() {
             li.classList.add('active');
 
             // 선택된 카테고리 메뉴 표시
-            currentCategory = li.dataset.category;
+            let currentCategory = li.dataset.category;
             displayMenuItems(currentCategory);
         });
     });
