@@ -275,7 +275,7 @@ function updateTotalPrice() {
     const totalPriceElement = document.getElementById('total-price');
     
     if (totalPriceElement) {
-        totalPriceElement.textContent = `${totalText} ₩ ${total.toLocaleString()}`;
+        totalPriceElement.textContent = `${totalText} ${total.toLocaleString()}`;
     }
 }
 
