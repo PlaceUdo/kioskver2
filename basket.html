@@ -31,31 +31,6 @@
         }
     </style>
     <script>
-        // 페이지 로드 시 전체 화면 요청 함수
-        function requestFullScreen() {
-            const element = document.documentElement;
-            if (element.requestFullscreen) {
-                element.requestFullscreen();
-            } else if (element.mozRequestFullScreen) { // Firefox
-                element.mozRequestFullScreen();
-            } else if (element.webkitRequestFullscreen) { // Chrome, Safari and Opera
-                element.webkitRequestFullscreen();
-            } else if (element.msRequestFullscreen) { // Internet Explorer/Edge
-                element.msRequestFullscreen();
-            }
-        }
-
-        // 태블릿 또는 모바일 기기 감지 및 전체 화면 요청
-        function checkDeviceAndFullScreen() {
-            const isMobileOrTablet = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
-            if (isMobileOrTablet) {
-                setTimeout(requestFullScreen, 500);
-            }
-        }
-
-        window.addEventListener('load', checkDeviceAndFullScreen);
-        
         // 요구사항 1: 장바구니 초기화 감지
         window.addEventListener('storage', function(e) {
             if (e.key === 'basketCleared') {
